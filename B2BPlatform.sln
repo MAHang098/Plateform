@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.271
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B2BPlatform", "B2BPlatform\B2BPlatform.csproj", "{C5E0766C-283E-4CBC-B3F4-C17F5168D293}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HWb2bAccess", "HWb2bAccess\HWb2bAccess.csproj", "{DC923EAA-A3D9-4BC1-ADB0-5FF3574CD096}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K3Access", "K3Access\K3Access.csproj", "{0C24AFC3-A7B1-4662-B3F9-9A81921220D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestHwOpenApi", "TestHwOpenApi\TestHwOpenApi.csproj", "{727137FB-2F46-450C-AF36-1974582B0505}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{0C24AFC3-A7B1-4662-B3F9-9A81921220D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C24AFC3-A7B1-4662-B3F9-9A81921220D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C24AFC3-A7B1-4662-B3F9-9A81921220D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{727137FB-2F46-450C-AF36-1974582B0505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{727137FB-2F46-450C-AF36-1974582B0505}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{727137FB-2F46-450C-AF36-1974582B0505}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{727137FB-2F46-450C-AF36-1974582B0505}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

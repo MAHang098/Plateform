@@ -45,14 +45,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FrmSystem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FrmSystem.Designer.cs">
+      <DependentUpon>FrmSystem.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmSystem.resx">
+      <DependentUpon>FrmSystem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -74,6 +77,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{93771777-dbe2-4862-ac28-649d38937e21}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HWb2bAccess\HWb2bAccess.csproj">
+      <Project>{dc923eaa-a3d9-4bc1-adb0-5ff3574cd096}</Project>
+      <Name>HWb2bAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\K3Access\K3Access.csproj">
+      <Project>{0c24afc3-a7b1-4662-b3f9-9a81921220d5}</Project>
+      <Name>K3Access</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

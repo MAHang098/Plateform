@@ -135,7 +135,7 @@ namespace HWb2bAccess.DAL
         private static string CompleteUrl(string baseUrl, string uri)
         {
             baseUrl = baseUrl.Trim().TrimEnd('/');//删除多余的空格和尾部的/
-            if (!uri.StartsWith("/")) uri = "/" + uri;
+            uri = uri.Trim().TrimStart('/');
             string url = baseUrl + "/" + uri;
             return url;
         }

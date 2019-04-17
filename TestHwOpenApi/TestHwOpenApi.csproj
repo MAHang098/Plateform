@@ -50,7 +50,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="HwApi.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{93771777-dbe2-4862-ac28-649d38937e21}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HWb2bAccess\HWb2bAccess.csproj">
+      <Project>{dc923eaa-a3d9-4bc1-adb0-5ff3574cd096}</Project>
+      <Name>HWb2bAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

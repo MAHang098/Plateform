@@ -1,4 +1,5 @@
-﻿using HWb2bAccess.Model;
+﻿using HWb2bAccess.DAL;
+using HWb2bAccess.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +10,14 @@ namespace HWb2bAccess.BLL
 {
     public class PoBLL
     {
-        TokenBLL tokenBLL = null;
-        AccessToken accessToken = null;
+        PoDAL dal = new PoDAL();
         public PoBLL()
         {
-            
-
-            tokenBLL = new TokenBLL();
-            accessToken = tokenBLL.CurrentToken;
+                        
         }
-        public POInfo GetPO()
+        public PO GetPO()
         {
-
+            return dal.GetPo("");
         }
     }
 }

@@ -46,14 +46,15 @@
   <ItemGroup>
     <Compile Include="BLL\PoBLL.cs" />
     <Compile Include="BLL\TokenBLL.cs" />
+    <Compile Include="DAL\HwApiHelper.cs" />
     <Compile Include="DAL\PoDAL.cs" />
     <Compile Include="DAL\TokenDAL.cs" />
-    <Compile Include="Model\AccessAuth.cs" />
-    <Compile Include="Model\AccessToken.cs" />
+    <Compile Include="Model\PO.cs" />
+    <Compile Include="Model\Token.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="HWinfo.ini" />
+    <None Include="HwApi.ini" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -61,9 +62,6 @@
       <Project>{93771777-dbe2-4862-ac28-649d38937e21}</Project>
       <Name>Common</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include=".net.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

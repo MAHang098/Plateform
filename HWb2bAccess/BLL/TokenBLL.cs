@@ -10,9 +10,11 @@ namespace HWb2bAccess.BLL
 {
     public class TokenBLL
     {
-        TokenBLL tokenBLL = null;
-        AccessToken accessToken = null;
-        public AccessToken CurrentToken { get; }
+        
+        public static Token CurrentToken {
+            get {
+                return TokenDAL.GetToken();
+            } }
        
     }
 }

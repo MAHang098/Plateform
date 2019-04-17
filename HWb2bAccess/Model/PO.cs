@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace HWb2bAccess.Model
 {
-    public class AccessAuth
+   public class PO
     {
-        public string basUrl { get; set; }
-        public string appId { get; set; }
-        public string appSecret { get; set; }
+        public string Id { get; set; }
+        public string HwPONo { get; set; }
+        public DateTime PoDate { get; set; }
     }
 }

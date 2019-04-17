@@ -57,6 +57,28 @@ namespace TestHwOpenApi
 
 
 
+        
+
+        //获取令牌方法：
+        private static Token GetToken()
+        {
+            string url = "https://api-beta.huawei.com:443/oauth2/token";
+            string key = "TMf6V9jnrMQXBwYVhhGThuQesQka";
+            string secury = "n8gzGoJ9uUIZIIox5M359Nwgugga";
+            System.Net.HttpWebResponse response = CreateTokenHttpResponse(url, key, secury, null);
+            string result = GetResponseString(response);
+            Token token = JsonConvert.DeserializeObject<Token>(result);
+            return token;
+        }
+
+        private static string GetResponseString(HttpWebResponse response)
+        {
+            using (StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
+            {
+                return reader.ReadToEnd();
+            }
+
+        }
         ////主方法：
         //public static void PushGPSToHuawei(DataMap.GPS gps)
         //{
@@ -85,26 +107,6 @@ namespace TestHwOpenApi
         //    }
         //}
 
-        //获取令牌方法：
-        private static Token GetToken()
-        {
-            string url = "https://api-beta.huawei.com:443/oauth2/token";
-            string key = "TMf6V9jnrMQXBwYVhhGThuQesQka";
-            string secury = "n8gzGoJ9uUIZIIox5M359Nwgugga";
-            System.Net.HttpWebResponse response = CreateTokenHttpResponse(url, key, secury, null);
-            string result = GetResponseString(response);
-            Token token = JsonConvert.DeserializeObject<Token>(result);
-            return token;
-        }
-
-        private static string GetResponseString(HttpWebResponse response)
-        {
-            using (StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
-            {
-                return reader.ReadToEnd();
-            }
-
-        }
 
         ////编辑json格式的字串参数方法：
         //private static string GetParamStr(DataMap.GPS gps, string custOrdNO)

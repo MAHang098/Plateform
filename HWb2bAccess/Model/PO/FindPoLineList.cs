@@ -158,36 +158,108 @@ namespace HWb2bAccess.Model.PO
         /// </summary>
         public string AgentName { get; set; }
         /// <summary>
-        /// 附件
+        /// 附件数量
         /// </summary>
-        public string AttachmentQty { get; set; }
-        public string biddingArea { get; set; }
-        public string billToLocation { get; set; }
-        public string businessMode { get; set; }
-        public string carrierName { get; set; }
-        public string category { get; set; }
-        public string currencyCode { get; set; }
-        public string dueQty { get; set; }
-        public string engineeringNo { get; set; }
-        public string engInfo { get; set; }
-        public string engInfoCentralZone { get; set; }
-        public string engInfoEngineeringName { get; set; }
-        public string engInfoSalesContractNo { get; set; }
-        public string exceptionUpdatedDate { get; set; }
-        public string expireDate { get; set; }
-        public string firstPromiseDate { get; set; }
-        public string issuOffice { get; set; }
-        public string itemCode { get; set; }
-        public string itemDescription { get; set; }
-        public string itemRevision { get; set; }
-        public string manufactureSiteInfo { get; set; }
-        public string needByDate { get; set; }
-        public string openDate { get; set; }
-        public string openTaskQuantity { get; set; }
-        public string taskQuantity { get; set; }
-        public string orgName { get; set; }
+        public float AttachmentQty { get; set; }
+        /// <summary>
+        /// 招标区域
+        /// </summary>
+        public string BiddingArea { get; set; }
+        /// <summary>
+        /// 开票地址
+        /// </summary>
+        public string BillToLocation { get; set; }
+        /// <summary>
+        /// 采购模式
+        /// </summary>
+        public EBussinessMode BusinessMode { get; set; }
+        /// <summary>
+        /// 发运方式
+        /// </summary>
+        public string CarrierName { get; set; }
+        /// <summary>
+        /// 品类
+        /// </summary>
+        public string Category { get; set; }
+        /// <summary>
+        /// 币种
+        /// </summary>
+        public string CurrencyCode { get; set; }
+        /// <summary>
+        /// 未交付数量
+        /// </summary>
+        public float DueQty { get; set; }
+        /// <summary>
+        /// 工程号
+        /// </summary>
+        public string EngineeringNo { get; set; }
+        /// <summary>
+        /// 产品大类
+        /// </summary>
+        public string EngInfo { get; set; }
+        /// <summary>
+        /// 母局
+        /// </summary>
+        public string EngInfoCentralZone { get; set; }
+        /// <summary>
+        /// 项目名称或工程名称
+        /// </summary>
+        public string EngInfoEngineeringName { get; set; }
+        /// <summary>
+        /// 销售合同号
+        /// </summary>
+        public string EngInfoSalesContractNo { get; set; }
+        /// <summary>
+        /// 例外信息释放时间
+        /// </summary>
+        public DateTime ExceptionUpdatedDate { get; set; }
+        /// <summary>
+        /// 订单有效日期
+        /// </summary>
+        public DateTime ExpireDate { get; set; }
+        /// <summary>
+        /// 首次承诺日期
+        /// </summary>
+        public DateTime FirstPromiseDate { get; set; }
+        /// <summary>
+        /// 开票单位
+        /// </summary>
+        public string IssuOffice { get; set; }
+        public string ItemCode { get; set; }
+        public string ItemDescription { get; set; }
+        public string ItemRevision { get; set; }
+        /// <summary>
+        /// 生产：生产厂家， 工程：站点信息，格式：站点ID<!>站点编码<!>站点名称
+        /// </summary>
+        public string ManufactureSiteInfo { get; set; }
+        /// <summary>
+        /// 服务结束日期或完工日期
+        /// </summary>
+        public DateTime NeedByDate { get; set; }
+        /// <summary>
+        /// 接受时间
+        /// </summary>
+        public DateTime OpenDate { get; set; }
+        /// <summary>
+        /// 待签返任务单数量
+        /// </summary>
+        public float OpenTaskQuantity { get; set; }
+        /// <summary>
+        /// 总任务单数量
+        /// </summary>
+        public float TaskQuantity { get; set; }
+        /// <summary>
+        /// 华为子公司
+        /// </summary>
+        public string OrgName { get; set; }
+        /// <summary>
+        /// 厂家型号
+        /// </summary>
         public string partNumber { get; set; }
-        public string paymentTerms { get; set; }
+        /// <summary>
+        /// 支付条款
+        /// </summary>
+        public string PaymentTerms { get; set; }
         public string pllaNoteToReceiver { get; set; }
         public string poLineNum { get; set; }
         public string poNumber { get; set; }

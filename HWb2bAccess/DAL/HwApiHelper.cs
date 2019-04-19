@@ -12,6 +12,7 @@ namespace HWb2bAccess.DAL
 {
     public class HwApiHelper
     {
+        static int timeout = 30000;//10s
         #region HW OpenAPI Access
         /// <summary>
         /// 用于HW Open API获取token
@@ -31,11 +32,14 @@ namespace HWb2bAccess.DAL
             {
                 SetCertificatePolicy();
                 request = WebRequest.Create(url) as HttpWebRequest;
+                
             }
             else
             {
                 request = WebRequest.Create(url) as HttpWebRequest;
+               
             }
+            request.Timeout = timeout;
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
             request.Headers.Add("Authorization", "Basic " + Convert.ToBase64String(System.Text.Encoding.Default.GetBytes(key + ":" + secury)).Trim());
@@ -69,13 +73,11 @@ namespace HWb2bAccess.DAL
             //发送HTTPS请求  
             if (url.StartsWith("https", StringComparison.OrdinalIgnoreCase))
             {
-                SetCertificatePolicy();
-                request = WebRequest.Create(url) as HttpWebRequest;
+                SetCertificatePolicy();               
             }
-            else
-            {
-                request = WebRequest.Create(url) as HttpWebRequest;
-            }
+            
+            request = WebRequest.Create(url) as HttpWebRequest;
+            request.Timeout = timeout;
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
             request.Headers.Add("Authorization", "Bearer " + accessToken.Trim());
@@ -92,8 +94,9 @@ namespace HWb2bAccess.DAL
                 request.CookieContainer = new CookieContainer();
                 request.CookieContainer.Add(cookies);
             }
-            //发送POST数据        
-            return request.GetResponse() as HttpWebResponse;
+            //发送POST数据    
+            var reps = request.GetResponse() as HttpWebResponse;
+            return reps;
         }
 
         public static HttpWebResponse HuaweiGetSync(string baseUrl, string uri, string accessToken, CookieCollection cookies)
@@ -110,6 +113,7 @@ namespace HWb2bAccess.DAL
             {
                 request = WebRequest.Create(url) as HttpWebRequest;
             }
+            request.Timeout = timeout;
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
             request.Headers.Add("Authorization", "Bearer " + accessToken.Trim());

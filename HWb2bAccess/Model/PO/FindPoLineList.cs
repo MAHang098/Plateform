@@ -6,19 +6,31 @@ using System.Threading.Tasks;
 
 namespace HWb2bAccess.Model.PO
 {
-    class FindPoLineList
+
+    public class PoLineListInParameter
     {
+        public string PoSubType { get; set; }
+        public string ShipmentStatus { get; set; }
+        public string PoStatus { get; set; }
+        public string StatusType { get; set; }
+        public PoLineListInParameter()
+        {
+            PoSubType = "P";
+            ShipmentStatus = "all";
+            PoStatus = "all";
+            StatusType = "COL_TASK_STATUS";
+        }
     }
-    public class InParameter
+    public class PoLineListInParameterFull
     {
         /// <summary>
         /// PO签返标志，非必填
         /// </summary>
-        EPoStatus PoStatus { get; set; }
+        public EPoStatus PoStatus { get; set; }
         /// <summary>
         /// PO业务领域，必需
         /// </summary>
-        EPoSubType PoSubType { get; set; }
+        public EPoSubType PoSubType { get; set; }
         /// <summary>
         /// 状态类别，必需，固定为COL_TASK_STATUS
         /// </summary>
@@ -130,20 +142,20 @@ namespace HWb2bAccess.Model.PO
         /// </summary>
         public DateTime LastUpdateDateEnd { get; set; }
 
-        public InParameter()
-        {
-            PoSubType = EPoSubType.P;
-            StatusType = "COL_TASK_STATUS";
-        }
+        //public PoLineListInParameter()
+        //{
+        //    PoSubType = EPoSubType.P;
+        //    StatusType = "COL_TASK_STATUS";
+        //}
 
     }
-    public class OutputParameter
+    public class PoLineListOutputParameter
     {
-        public PageV0 PageV0 { get; set; }
-        public Result[] Result { get; set; }
+        public FindPoLineListPageV0 FindPoLineListPageV0 { get; set; }
+        public FindPoLineListResult[] Result { get; set; }
     }
 
-    public class Result
+    public class FindPoLineListResult
     {
         /// <summary>
         /// PO发运行ID
@@ -227,6 +239,9 @@ namespace HWb2bAccess.Model.PO
         public string IssuOffice { get; set; }
         public string ItemCode { get; set; }
         public string ItemDescription { get; set; }
+        /// <summary>
+        /// 物料/服务编码版本
+        /// </summary>
         public string ItemRevision { get; set; }
         /// <summary>
         /// 生产：生产厂家， 工程：站点信息，格式：站点ID<!>站点编码<!>站点名称
@@ -260,40 +275,133 @@ namespace HWb2bAccess.Model.PO
         /// 支付条款
         /// </summary>
         public string PaymentTerms { get; set; }
-        public string pllaNoteToReceiver { get; set; }
-        public string poLineNum { get; set; }
-        public string poNumber { get; set; }
-        public string priceOverride { get; set; }
-        public string prNumber { get; set; }
-        public string projectNo { get; set; }
-        public string promiseDate { get; set; }
-        public string publishDate { get; set; }
-        public string receiver { get; set; }
-        public string remark { get; set; }
-        public string repOfficeName { get; set; }
-        public string revisionNum { get; set; }
-        public string shipmentNum { get; set; }
-        public string shipmentStatus { get; set; }
-        public string shipToLocation { get; set; }
-        public string shipToLocationCode { get; set; }
-        public string startDate { get; set; }
-        public string subcontractNo { get; set; }
-        public string subProjectCode { get; set; }
-        public string taskNum { get; set; }
-        public string taxRate { get; set; }
-        public string termsMode { get; set; }
-        public string unitOfMeasure { get; set; }
-        public string vendorCode { get; set; }
-        public string vendorName { get; set; }
-        public string vendorShortText { get; set; }
-        public string hwm { get; set; }
-        public string quantity { get; set; }
-        public string quantityCancelled { get; set; }
-        public string quantityReceived { get; set; }
+        /// <summary>
+        /// 给验收人备注
+        /// </summary>
+        public string PllaNoteToReceiver { get; set; }
+        /// <summary>
+        /// 订单行号
+        /// </summary>
+        public string PoLineNum { get; set; }
+        /// <summary>
+        /// 订单号
+        /// </summary>
+        public string PoNumber { get; set; }
+        /// <summary>
+        /// 单价
+        /// </summary>
+        public string PriceOverride { get; set; }
+        /// <summary>
+        /// PR号
+        /// </summary>
+        public string PrNumber { get; set; }
+        /// <summary>
+        /// 项目编码
+        /// </summary>
+        public string ProjectNo { get; set; }
+        /// <summary>
+        /// 承诺日期(页面显示为需求日期)
+        /// </summary>
+        public DateTime PromiseDate { get; set; }
+        /// <summary>
+        /// 订单下发日期
+        /// </summary>
+        public DateTime PublishDate { get; set; }
+        /// <summary>
+        /// 接收人
+        /// </summary>
+        public string Receiver { get; set; }
+        /// <summary>
+        /// 备注
+        /// </summary>
+        public string Remark { get; set; }
+        /// <summary>
+        /// 代表处
+        /// </summary>
+        public string RepOfficeName { get; set; }
+        /// <summary>
+        /// 版本号
+        /// </summary>
+        public string RevisionNum { get; set; }
+        /// <summary>
+        /// 发运行号
+        /// </summary>
+        public string ShipmentNum { get; set; }
+        /// <summary>
+        /// 订单状态
+        /// </summary>
+        public EShipmentStatus ShipmentStatus { get; set; }
+        /// <summary>
+        /// 收货地点
+        /// </summary>
+        public string ShipToLocation { get; set; }
+        /// <summary>
+        /// 收货地点code
+        /// </summary>
+        public string ShipToLocationCode { get; set; }
+        /// <summary>
+        /// 开工日期
+        /// </summary>
+        public DateTime StartDate { get; set; }
+        /// <summary>
+        /// 采购协议号
+        /// </summary>
+        public string SubcontractNo { get; set; }
+        /// <summary>
+        /// 子项目编码
+        /// </summary>
+        public string SubProjectCode { get; set; }
+        /// <summary>
+        /// 任务令
+        /// </summary>
+        public string TaskNum { get; set; }
+        /// <summary>
+        /// 税率
+        /// </summary>
+        public string TaxRate { get; set; }
+        /// <summary>
+        /// 付款方式
+        /// </summary>
+        public string TermsMode { get; set; }
+        /// <summary>
+        /// 计量单位
+        /// </summary>
+        public string UnitOfMeasure { get; set; }
+        /// <summary>
+        /// 供应商编码
+        /// </summary>
+        public string VendorCode { get; set; }
+        /// <summary>
+        /// 供应商名称
+        /// </summary>
+        public string VendorName { get; set; }
+        /// <summary>
+        /// 给供应商备注（特殊备注）
+        /// </summary>
+        public string VendorShortText { get; set; }
+        /// <summary>
+        /// 华为型号
+        /// </summary>
+        public string Hwm { get; set; }
+        /// <summary>
+        /// 订单数量
+        /// </summary>
+        public string Quantity { get; set; }
+        /// <summary>
+        /// 取消数量
+        /// </summary>
+        public string QuantityCancelled { get; set; }
+        /// <summary>
+        /// 已收到数量
+        /// </summary>
+        public string QuantityReceived { get; set; }
+        /// <summary>
+        /// 变更List
+        /// </summary>
         public string ObjectChangeContext { get; set; }
     }
 
-    public class PageV0
+    public class FindPoLineListPageV0
     {
         public int TotalRows { get; set; }
         public int CurPage { get; set; }

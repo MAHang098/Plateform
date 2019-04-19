@@ -1,5 +1,6 @@
 ﻿using HWb2bAccess.BLL;
 using HWb2bAccess.Model;
+using HWb2bAccess.Model.PO;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -17,8 +18,10 @@ namespace TestHwOpenApi
     {
         static void Main(string[] args)
         {
-            Token token = TokenBLL.CurrentToken;
-            Console.WriteLine("The Token is: " + token.Access_token);
+            PoBLL bll = new PoBLL();
+            PoLineListInParameter inParameter = new PoLineListInParameter();
+            PoLineListOutputParameter polineList = bll.GetPoLineList(inParameter, 1,2);
+            Console.WriteLine(polineList.FindPoLineListPageV0);
             Console.ReadKey();
         }
 

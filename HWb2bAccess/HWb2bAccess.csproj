@@ -49,7 +49,7 @@
     <Compile Include="DAL\HwApiHelper.cs" />
     <Compile Include="DAL\PoDAL.cs" />
     <Compile Include="DAL\TokenDAL.cs" />
-    <Compile Include="Model\PO.cs" />
+    <Compile Include="Model\PO\FindPoLineList.cs" />
     <Compile Include="Model\SettingItems.cs" />
     <Compile Include="Model\Token.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

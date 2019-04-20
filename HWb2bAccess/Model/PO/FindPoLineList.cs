@@ -21,6 +21,13 @@ namespace HWb2bAccess.Model.PO
             StatusType = "COL_TASK_STATUS";
         }
     }
+    public class PoLineListOutputParameter
+    {
+        public FindPoLineListPageV0 PageVO { get; set; }
+        public FindPoLineListResult[] Result { get; set; }
+    }
+
+
     public class PoLineListInParameterFull
     {
         /// <summary>
@@ -149,11 +156,7 @@ namespace HWb2bAccess.Model.PO
         //}
 
     }
-    public class PoLineListOutputParameter
-    {
-        public FindPoLineListPageV0 FindPoLineListPageV0 { get; set; }
-        public FindPoLineListResult[] Result { get; set; }
-    }
+    
 
     public class FindPoLineListResult
     {

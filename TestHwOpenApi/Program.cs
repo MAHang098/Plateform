@@ -21,7 +21,20 @@ namespace TestHwOpenApi
             PoBLL bll = new PoBLL();
             PoLineListInParameter inParameter = new PoLineListInParameter();
             PoLineListOutputParameter polineList = bll.GetPoLineList(inParameter, 1,2);
-            Console.WriteLine(polineList.FindPoLineListPageV0);
+            if(polineList!=null)
+            {
+                Console.WriteLine("Find POs!");
+                Console.WriteLine("Total rows: " + polineList.PageVO.TotalRows);
+                Console.WriteLine("Total pages: " + polineList.PageVO.TotalPages);
+                Console.WriteLine("Page size: " + polineList.PageVO.PageSize);
+                Console.WriteLine("Current pages: " + polineList.PageVO.CurPage);
+            }
+            else
+            {
+                Console.WriteLine("Nothing found!");
+            }
+            Console.WriteLine("");
+            Console.WriteLine("Press any key to quit...");
             Console.ReadKey();
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -79,7 +80,7 @@ namespace HWb2bAccess.DAL
             request = WebRequest.Create(url) as HttpWebRequest;
             request.Timeout = timeout;
             request.Method = "POST";
-            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentType = "application/json";
             request.Headers.Add("Authorization", "Bearer " + accessToken.Trim());
             request.Headers.Add("soapAction", "");
             byte[] data = Encoding.Default.GetBytes(paramsJson);
@@ -115,7 +116,7 @@ namespace HWb2bAccess.DAL
             }
             request.Timeout = timeout;
             request.Method = "POST";
-            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentType = "application/json; charset=utf-8";// "application/x-www-form-urlencoded";
             request.Headers.Add("Authorization", "Bearer " + accessToken.Trim());
             request.Headers.Add("soapAction", "");
             if (cookies != null)
@@ -126,6 +127,52 @@ namespace HWb2bAccess.DAL
             //接收数据        
             return request.GetResponse() as HttpWebResponse;
         }
+
+        #endregion
+        #region Restsharp版
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="baseUrl"></param>
+        ///// <param name="uri"></param>
+        ///// <param name="accessToken"></param>
+        ///// <param name="paramsJson">根据输入参数序列化后的json数据</param>
+        ///// <param name="cookies"></param>
+        ///// <returns></returns>
+        //public static HttpWebResponse HuaweiPostSyncRestsharp(string baseUrl, string uri, string accessToken, string paramsJson, CookieCollection cookies)
+        //{
+            
+        //    //string url = CompleteUrl(baseUrl, uri);
+        //    //发送HTTPS请求  
+        //    if (url.StartsWith("https", StringComparison.OrdinalIgnoreCase))
+        //    {
+        //        SetCertificatePolicy();
+        //    }
+        //    var client = new RestClient(baseUrl);
+        //    var request = new RestRequest(uri);
+        //    request.Timeout = timeout;
+
+        //    request.Method = Method.POST;
+        //    request.AddHeader("Content-Type", "application/x-www-form-urlencoded")
+        //    request.ContentType = "application/x-www-form-urlencoded";
+        //    request.Headers.Add("Authorization", "Bearer " + accessToken.Trim());
+        //    request.Headers.Add("soapAction", "");
+        //    byte[] data = Encoding.Default.GetBytes(paramsJson);
+        //    request.ContentLength = data.Length;
+        //    using (Stream stream = request.GetRequestStream())
+        //    {
+        //        stream.Write(data, 0, data.Length);
+        //    }
+
+        //    if (cookies != null)
+        //    {
+        //        request.CookieContainer = new CookieContainer();
+        //        request.CookieContainer.Add(cookies);
+        //    }
+        //    //发送POST数据    
+        //    var reps = request.GetResponse() as HttpWebResponse;
+        //    return reps;
+        //}
 
         #endregion
         public static string GetResponseString(HttpWebResponse response)

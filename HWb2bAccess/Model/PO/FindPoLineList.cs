@@ -9,39 +9,22 @@ namespace HWb2bAccess.Model.PO
 
     public class PoLineListInParameter
     {
+        /// <summary>
+        /// 必需。PO业务领域：E-工程领域 P-生产领域 G-综合领域
+        /// </summary>
         public string PoSubType { get; set; }
+        /// 必须。状态类别，固定为COL_TASK_STATUS
+        /// </summary>
+        public string StatusType { get; set; }
+        /// <summary>
+        /// 非必须。订单状态，all-全部，NEW-新下订单，OPEN-在途订单，CANCELLED-取消的订单，CLOSED-关闭的订单，CLOSED_FOR_RECEVING-已交货未关闭的订单
+        /// </summary>
         public string ShipmentStatus { get; set; }
+        /// <summary>
+        /// 非必需。订单签返状态。"before_signed_back：表示未签返， signed_back：表示已签返，   WARN：表示警告
+        /// </summary>
         public string PoStatus { get; set; }
-        public string StatusType { get; set; }
-        public PoLineListInParameter()
-        {
-            PoSubType = "P";
-            ShipmentStatus = "all";
-            PoStatus = "all";
-            StatusType = "COL_TASK_STATUS";
-        }
-    }
-    public class PoLineListOutputParameter
-    {
-        public FindPoLineListPageV0 PageVO { get; set; }
-        public FindPoLineListResult[] Result { get; set; }
-    }
 
-
-    public class PoLineListInParameterFull
-    {
-        /// <summary>
-        /// PO签返标志，非必填
-        /// </summary>
-        public EPoStatus PoStatus { get; set; }
-        /// <summary>
-        /// PO业务领域，必需
-        /// </summary>
-        public EPoSubType PoSubType { get; set; }
-        /// <summary>
-        /// 状态类别，必需，固定为COL_TASK_STATUS
-        /// </summary>
-        public string StatusType { get; set; }
         /// <summary>
         /// 任务单状态,非必需
         /// </summary>
@@ -50,7 +33,7 @@ namespace HWb2bAccess.Model.PO
         /// <summary>
         /// 是否只看交期变更，非必需
         /// </summary>
-        public bool HasChangeDelivery { get; set; }
+        public bool? HasChangeDelivery { get; set; }
         /// <summary>
         /// Item编码，非必需。最多10个，多个时用半角逗号隔开
         /// </summary>
@@ -66,31 +49,28 @@ namespace HWb2bAccess.Model.PO
         /// <summary>
         /// 承诺开始日期,非必需,Data Format：YYYY-MM-dd
         /// </summary>
-        public DateTime PromiseDateStart { get; set; }
+        public string PromiseDateStart { get; set; }
         /// <summary>
         /// 承诺结束日期,非必需,Data Format：YYYY-MM-dd
         /// </summary>
-        public DateTime PromiseDateEnd { get; set; }
+        public string PromiseDateEnd { get; set; }
         /// <summary>
         /// 发布开始日期,非必需,Data Format：YYYY-MM-dd
         /// </summary>
-        public DateTime PublishDateStart { get; set; }
+        public string PublishDateStart { get; set; }
         /// <summary>
         /// 发布结束日期,非必需,Data Format：YYYY-MM-dd
         /// </summary>
-        public DateTime PublishDateEnd { get; set; }
+        public string PublishDateEnd { get; set; }
+
         /// <summary>
-        /// 订单状态，非必需
+        /// 采购模式，非必需.取值为：all, T_DUN,DUN, Normal, PO_Consignment,VMI_Consignment,  VCI_CA, VCI_PO,  VMI_TSN,   VMI_VRN,   Candyman
         /// </summary>
-        public EShipmentStatus ShipmentStatus { get; set; }
-        /// <summary>
-        /// 采购模式，非必需
-        /// </summary>
-        public EBussinessMode BusinessMode{ get; set; }
+        public string BusinessMode { get; set; }
         /// <summary>
         /// 厂家型号，非必需
         /// </summary>
-        public string PartNumber{ get; set; }
+        public string PartNumber { get; set; }
         /// <summary>
         /// 采购协议号，非必需
         /// </summary>
@@ -118,7 +98,7 @@ namespace HWb2bAccess.Model.PO
         /// <summary>
         /// 超过X天没处理，非必需
         /// </summary>
-        public int MoreXDaysUndeal { get; set; }
+        public int? MoreXDaysUndeal { get; set; }
         /// <summary>
         /// 生产厂家，非必需
         /// </summary>
@@ -131,7 +111,7 @@ namespace HWb2bAccess.Model.PO
         /// 是否包含VCICA，非必需 ，生产专用
         ///'新订单：includeVCICA=-1； vci-ca订单 :includeVCICA=1;不传PO和CA都查出来。
         /// </summary>
-        public int IncludeVCICA { get; set; }
+        public int? IncludeVCICA { get; set; }
         /// <summary>
         /// lineLocationId集合，非必需
         /// </summary>
@@ -141,22 +121,49 @@ namespace HWb2bAccess.Model.PO
         /// </summary>
         public List<int> InstanceIdList { get; set; }
         /// <summary>
-        /// 最后更新时间-开始，非必需
+        /// 最后更新时间-开始，非必需，Data Format：yyyy-MM-dd HH:mm:ss
         /// </summary>
-        public DateTime LastUpdateDateStart { get; set; }
+        public string LastUpdateDateStart { get; set; }
         /// <summary>
         /// 最后更新时间-结束，非必需
         /// </summary>
-        public DateTime LastUpdateDateEnd { get; set; }
-
-        //public PoLineListInParameter()
-        //{
-        //    PoSubType = EPoSubType.P;
-        //    StatusType = "COL_TASK_STATUS";
-        //}
+        public string LastUpdateDateEnd { get; set; }
+        /// <summary>
+        /// 构造函数，提供默认值
+        /// </summary>
+        public PoLineListInParameter()
+        {
+            PoSubType = "P";
+            ShipmentStatus = "all";
+            PoStatus = "all";
+            StatusType = "COL_TASK_STATUS";
+            HasChangeDelivery = null;
+            MoreXDaysUndeal = null;
+            IncludeVCICA = null;
+        }
 
     }
-    
+
+
+    public class PoLineListOutputParameter
+    {
+        public FindPoLineListPageVO PageVO { get; set; }
+        public FindPoLineListResult[] Results { get; set; }
+       
+    }
+
+    public class FindPoLineListPageVO
+    {
+        public int TotalRows { get; set; }
+        public int CurPage { get; set; }
+        public int PageSize { get; set; }
+        public int ResultMode { get; set; }
+        public int StartIndex { get; set; }
+        public int EndIndex { get; set; }
+        public int MysqlStartIndex { get; set; }
+        public int MysqlEndIndex { get; set; }
+        public int TotalPages { get; set; }
+    }
 
     public class FindPoLineListResult
     {
@@ -404,18 +411,6 @@ namespace HWb2bAccess.Model.PO
         public string ObjectChangeContext { get; set; }
     }
 
-    public class FindPoLineListPageV0
-    {
-        public int TotalRows { get; set; }
-        public int CurPage { get; set; }
-        public int PageSize { get; set; }
-        public int ResultMode { get; set; }
-        public int StartIndex { get; set; }
-        public int EndIndex { get; set; }
-        public int MysqlStartIndex { get; set; }
-        public int MysqlEndIndex { get; set; }
-        public int TotalPages { get; set; }
-    }
 
     #region Enums
     /// <summary>
@@ -423,6 +418,7 @@ namespace HWb2bAccess.Model.PO
     /// </summary>
     public enum EPoStatus
     {
+        all,
         /// <summary>
         /// 未签返
         /// </summary>
@@ -433,6 +429,9 @@ namespace HWb2bAccess.Model.PO
         signed_back,
         WARN
     }
+    /// <summary>
+    /// PO业务领域
+    /// </summary>
     public enum EPoSubType
     {
         /// <summary>
@@ -448,7 +447,9 @@ namespace HWb2bAccess.Model.PO
         /// </summary>
         G
     }
-
+    /// <summary>
+    /// 订单状态
+    /// </summary>
     public enum EShipmentStatus
     {
         all,

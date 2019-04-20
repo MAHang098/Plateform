@@ -2,6 +2,7 @@
 using HWb2bAccess.Model;
 using HWb2bAccess.Model.PO;
 using Newtonsoft.Json;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,7 +46,31 @@ namespace HWb2bAccess.DAL
             PoLineListOutputParameter output = JsonConvert.DeserializeObject<PoLineListOutputParameter>(resJson);
             return output;
         }
-
+        /// <summary>
+        /// RestSharp版PO列表查询
+        /// </summary>
+        /// <param name="inParameter"></param>
+        /// <param name="page"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        internal PoLineListOutputParameter GetPoLineListRest(PoLineListInParameter inParameter, int page, int pageSize)
+        {
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore
+            };
+            string json = JsonConvert.SerializeObject(inParameter, settings);
+            string url = pageSize == 100 ? findPoLineListUri + page : findPoLineListUri + pageSize + "/" + page;
+            var resJson = HwApiHelper.HuaweiPostSyncRest(baseUrl, url, token.Access_token, json, null);
+            
+            PoLineListOutputParameter output = JsonConvert.DeserializeObject<PoLineListOutputParameter>(resJson);
+            return output;
+        }
         #endregion
+
+
+
+
+
     }
 }

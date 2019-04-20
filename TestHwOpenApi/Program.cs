@@ -19,8 +19,8 @@ namespace TestHwOpenApi
         static void Main(string[] args)
         {
             PoBLL bll = new PoBLL();
-            PoLineListInParameter inParameter = new PoLineListInParameter();
-            PoLineListOutputParameter polineList = bll.GetPoLineList(inParameter, 1,2);
+            
+            PoLineListOutputParameter polineList = bll.GetPoLineList(2,EPoStatus.all,EPoSubType.P,EShipmentStatus.all,2 );
             if(polineList!=null)
             {
                 Console.WriteLine("Find POs!");

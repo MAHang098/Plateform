@@ -17,9 +17,45 @@ namespace HWb2bAccess.BLL
                         
            
         }
-       public PoLineListOutputParameter GetPoLineList(PoLineListInParameter inParameter, int page, int pageSize = 100)
+        /// <summary>
+        /// 查询华为订单
+        /// </summary>
+        /// <param name="page">第几页。由于总页数未知，可以从第1页遍历到第n页，当查不出数据时就是最后一页</param>
+        /// <param name="poStatus">PO签返标志</param>
+        /// <param name="poSubType">PO业务领域</param>
+        /// <param name="shipmentStatus">订单状态</param>
+        /// <param name="pageSize">每页条数</param>
+        /// <returns>PoLineListOutputParameter订单查询输出参数，其中PageVO包含由数据数量信息，Results包含返回的数据集</returns>
+        public PoLineListOutputParameter GetPoLineList(int page,EPoStatus poStatus=EPoStatus.all, EPoSubType poSubType=EPoSubType.P, EShipmentStatus shipmentStatus=EShipmentStatus.all,  int pageSize = 100)
         {
-            PoLineListOutputParameter output = dal.GetPoLineList(inParameter, page, pageSize);
+            PoLineListInParameter param = new PoLineListInParameter
+            {
+                PoStatus = poStatus.ToString(),
+                PoSubType = poSubType.ToString(),
+                ShipmentStatus = shipmentStatus.ToString()
+            };
+
+            PoLineListOutputParameter output = dal.GetPoLineList(param, page, pageSize);
+            return output;
+        }
+        /// <summary>
+        /// 查询华为订单,Restsharp方式
+        /// </summary>
+        /// <param name="page">第几页。由于总页数未知，可以从第1页遍历到第n页，当查不出数据时就是最后一页</param>
+        /// <param name="poStatus">PO签返标志</param>
+        /// <param name="poSubType">PO业务领域</param>
+        /// <param name="shipmentStatus">订单状态</param>
+        /// <param name="pageSize">每页条数</param>
+        /// <returns>PoLineListOutputParameter订单查询输出参数，其中PageVO包含由数据数量信息，Results包含返回的数据集</returns>
+        public PoLineListOutputParameter GetPoLineListRest(int page, EPoStatus poStatus = EPoStatus.all, EPoSubType poSubType = EPoSubType.P, EShipmentStatus shipmentStatus = EShipmentStatus.all, int pageSize = 10)
+        {
+            PoLineListInParameter param = new PoLineListInParameter
+            {
+                PoStatus = poStatus.ToString(),
+                PoSubType = poSubType.ToString(),
+                ShipmentStatus = shipmentStatus.ToString()
+            };
+            PoLineListOutputParameter output = dal.GetPoLineListRest(param, page, pageSize);
             return output;
         }
     }

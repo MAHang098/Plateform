@@ -148,7 +148,7 @@ namespace HWb2bAccess.Model.PO
     public class PoLineListOutputParameter
     {
         public FindPoLineListPageVO PageVO { get; set; }
-        public FindPoLineListResult[] Results { get; set; }
+        public FindPoLineListResult[] Result { get; set; }
        
     }
 

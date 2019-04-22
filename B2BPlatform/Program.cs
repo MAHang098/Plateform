@@ -16,7 +16,7 @@ namespace B2BPlatform
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmSystem());
+            Application.Run(new Forms.TestPOApi());
         }
     }
 }

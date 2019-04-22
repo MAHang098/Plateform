@@ -20,13 +20,13 @@ namespace HWb2bAccess.BLL
         /// <summary>
         /// 查询华为订单
         /// </summary>
-        /// <param name="page">第几页。由于总页数未知，可以从第1页遍历到第n页，当查不出数据时就是最后一页</param>
+        /// <param name="pageNum">第几页。由于总页数未知，可以从第1页遍历到第n页，当查不出数据时就是最后一页</param>
         /// <param name="poStatus">PO签返标志</param>
         /// <param name="poSubType">PO业务领域</param>
         /// <param name="shipmentStatus">订单状态</param>
         /// <param name="pageSize">每页条数</param>
         /// <returns>PoLineListOutputParameter订单查询输出参数，其中PageVO包含由数据数量信息，Results包含返回的数据集</returns>
-        public PoLineListOutputParameter GetPoLineList(int page,EPoStatus poStatus=EPoStatus.all, EPoSubType poSubType=EPoSubType.P, EShipmentStatus shipmentStatus=EShipmentStatus.all,  int pageSize = 100)
+        public PoLineListOutputParameter GetPoLineList(int pageNum,EPoStatus poStatus=EPoStatus.all, EPoSubType poSubType=EPoSubType.P, EShipmentStatus shipmentStatus=EShipmentStatus.all,  int pageSize = 100)
         {
             PoLineListInParameter param = new PoLineListInParameter
             {
@@ -35,7 +35,7 @@ namespace HWb2bAccess.BLL
                 ShipmentStatus = shipmentStatus.ToString()
             };
 
-            PoLineListOutputParameter output = dal.GetPoLineList(param, page, pageSize);
+            PoLineListOutputParameter output = dal.GetPoLineList(param, pageNum, pageSize);
             return output;
         }
         /// <summary>

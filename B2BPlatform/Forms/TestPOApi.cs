@@ -1,4 +1,5 @@
 ﻿using HWb2bAccess.BLL;
+using HWb2bAccess.Model;
 using HWb2bAccess.Model.PO;
 using System;
 using System.Collections.Generic;
@@ -38,7 +39,7 @@ namespace B2BPlatform.Forms
             
             EPoSubType subType = (EPoSubType)cbPoSubType.SelectedIndex;
             EShipmentStatus shipmentStatus = (EShipmentStatus)cbShipmentStatus.SelectedIndex;
-            PoLineListOutputParameter poLine = bll.GetPoLineList(pageNum, poStatus, subType, shipmentStatus, pageSize);
+            PoLineListOutput poLine = bll.GetPoLineList(pageNum, poStatus, subType, shipmentStatus, pageSize);
             if(poLine!=null)
             {
                 totalPages = poLine.PageVO.TotalPages;

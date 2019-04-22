@@ -15,13 +15,14 @@ namespace HWb2bAccess.DAL
     {
         string baseUrl = null;
         Token token = null;
-        string file = "HwApi.ini";
+        string settingFile = "HwApi.ini";
         string findPoLineListUri = "service/esupplier/findPoLineList/1.0.0/";
+        string genPoPdfUri= "service/esupplier/genPdfOfPo/1.0.0/";
         internal PoDAL()
         {
             //读配置文件
             MyConfiguration cfg = new MyConfiguration(false);
-            cfg.Load(file);
+            cfg.Load(settingFile);
             baseUrl = cfg.ReadString("BaseUrl");
             token = TokenDAL.GetToken();
         }
@@ -33,7 +34,7 @@ namespace HWb2bAccess.DAL
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        internal PoLineListOutputParameter GetPoLineList(PoLineListInParameter inParameter,int page,int pageSize)
+        internal PoLineListOutput GetPoLineList(PoLineListInput inParameter,int page,int pageSize)
         {
             JsonSerializerSettings settings = new JsonSerializerSettings
             {
@@ -43,9 +44,20 @@ namespace HWb2bAccess.DAL
             string url = pageSize == 100 ? findPoLineListUri + page: findPoLineListUri + pageSize + "/" + page;
             var res= HwApiHelper.HuaweiPostSync(baseUrl, url, token.Access_token, json, null);
             string resJson = HwApiHelper.GetResponseString(res);
-            PoLineListOutputParameter output = JsonConvert.DeserializeObject<PoLineListOutputParameter>(resJson);
+            var output = JsonConvert.DeserializeObject<PoLineListOutput>(resJson);
             return output;
         }
+
+        internal GenPoPdfOutParameter GenPoPdfDAL(GenPoPdfInput input)
+        {
+            string json = JsonConvert.SerializeObject(input);
+            var res = HwApiHelper.HuaweiPostSync(baseUrl, genPoPdfUri, token.Access_token, json, null);
+            string resJson = HwApiHelper.GetResponseString(res);
+            var output = JsonConvert.DeserializeObject<GenPoPdfOutParameter>(resJson);
+            return output;
+        }
+
+
         /// <summary>
         /// RestSharp版PO列表查询
         /// </summary>
@@ -53,7 +65,7 @@ namespace HWb2bAccess.DAL
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        internal PoLineListOutputParameter GetPoLineListRest(PoLineListInParameter inParameter, int page, int pageSize)
+        internal PoLineListOutput GetPoLineListRest(PoLineListInput inParameter, int page, int pageSize)
         {
             JsonSerializerSettings settings = new JsonSerializerSettings
             {
@@ -63,7 +75,7 @@ namespace HWb2bAccess.DAL
             string url = pageSize == 100 ? findPoLineListUri + page : findPoLineListUri + pageSize + "/" + page;
             var resJson = HwApiHelper.HuaweiPostSyncRest(baseUrl, url, token.Access_token, json, null);
             
-            PoLineListOutputParameter output = JsonConvert.DeserializeObject<PoLineListOutputParameter>(resJson);
+            PoLineListOutput output = JsonConvert.DeserializeObject<PoLineListOutput>(resJson);
             return output;
         }
         #endregion

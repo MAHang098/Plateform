@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace HWb2bAccess.Model.PO
 {
 
-    public class PoLineListInParameter
+    public class PoLineListInput
     {
         /// <summary>
         /// 必需。PO业务领域：E-工程领域 P-生产领域 G-综合领域
@@ -131,7 +131,7 @@ namespace HWb2bAccess.Model.PO
         /// <summary>
         /// 构造函数，提供默认值
         /// </summary>
-        public PoLineListInParameter()
+        public PoLineListInput()
         {
             PoSubType = "P";
             ShipmentStatus = "all";
@@ -145,7 +145,7 @@ namespace HWb2bAccess.Model.PO
     }
 
 
-    public class PoLineListOutputParameter
+    public class PoLineListOutput
     {
         public FindPoLineListPageVO PageVO { get; set; }
         public FindPoLineListResult[] Result { get; set; }
@@ -412,86 +412,6 @@ namespace HWb2bAccess.Model.PO
     }
 
 
-    #region Enums
-    /// <summary>
-    /// PO签返标志
-    /// </summary>
-    public enum EPoStatus
-    {
-        all,
-        /// <summary>
-        /// 未签返
-        /// </summary>
-        before_signed_back,
-        /// <summary>
-        /// 已签返
-        /// </summary>
-        signed_back,
-        WARN
-    }
-    /// <summary>
-    /// PO业务领域
-    /// </summary>
-    public enum EPoSubType
-    {
-        /// <summary>
-        /// 工程领域Engineering
-        /// </summary>
-        E,
-        /// <summary>
-        /// 生产领域Production
-        /// </summary>
-        P,
-        /// <summary>
-        /// 综合领域General
-        /// </summary>
-        G
-    }
-    /// <summary>
-    /// 订单状态
-    /// </summary>
-    public enum EShipmentStatus
-    {
-        all,
-        /// <summary>
-        /// 新下订单
-        /// </summary>
-        NEW,
-        /// <summary>
-        /// 在途订单
-        /// </summary>
-        OPEN,
-        /// <summary>
-        /// 取消的订单
-        /// </summary>
-        CANCELLED,
-        /// <summary>
-        /// 关闭的订单
-        /// </summary>
-        CLOSED,
-        /// <summary>
-        /// 已交货未关闭的订单
-        /// </summary>
-        CLOSED_FOR_RECEVING
-
-    }
-
-    public enum EBussinessMode
-    {
-        all,
-        T_DUN,
-        DUN,
-        Normal,
-        PO_Consignment,
-        VMI_Consignment,
-        VCI_CA,
-        VCI_PO,
-        VMI_TSN,
-        VMI_VRN,
-        Candyman
-
-    }
-
-    #endregion
+    
 }
 

@@ -14,8 +14,7 @@ namespace HWb2bAccess.BLL
         PoDAL dal = new PoDAL();
         public PoBLL()
         {
-                        
-           
+              
         }
         /// <summary>
         /// 查询华为订单
@@ -25,38 +24,62 @@ namespace HWb2bAccess.BLL
         /// <param name="poSubType">PO业务领域</param>
         /// <param name="shipmentStatus">订单状态</param>
         /// <param name="pageSize">每页条数</param>
-        /// <returns>PoLineListOutputParameter订单查询输出参数，其中PageVO包含由数据数量信息，Results包含返回的数据集</returns>
-        public PoLineListOutputParameter GetPoLineList(int pageNum,EPoStatus poStatus=EPoStatus.all, EPoSubType poSubType=EPoSubType.P, EShipmentStatus shipmentStatus=EShipmentStatus.all,  int pageSize = 100)
+        /// <returns>PoLineListOutput订单查询输出参数，其中PageVO包含由数据数量信息，Results包含返回的数据集</returns>
+        public PoLineListOutput GetPoLineList(int pageNum,EPoStatus poStatus=EPoStatus.all, EPoSubType poSubType=EPoSubType.P, EShipmentStatus shipmentStatus=EShipmentStatus.all,  int pageSize = 100)
         {
-            PoLineListInParameter param = new PoLineListInParameter
+            PoLineListInput param = new PoLineListInput
             {
                 PoStatus = poStatus.ToString(),
                 PoSubType = poSubType.ToString(),
                 ShipmentStatus = shipmentStatus.ToString()
             };
 
-            PoLineListOutputParameter output = dal.GetPoLineList(param, pageNum, pageSize);
+            PoLineListOutput output = dal.GetPoLineList(param, pageNum, pageSize);
             return output;
         }
+
+        public bool GenPoPdf(string outFile,bool showPrice,ELang lang=ELang.zh_CN,params PoLineToGenPdf[] poLines)
+        {
+            bool ret = false;
+            GenPoPdfInput input = new GenPoPdfInput
+            {
+                Lang = lang.ToString(),
+                QueryHistoryDB = false,
+                ShowPriceFlag = showPrice,
+                Lines = poLines
+            };
+            var res = dal.GenPoPdfDAL(input);
+            if(res!=null)
+            {
+                if(res.Success)
+                {
+                    string fileKey = res.FileUrl;
+                    //TODO:FileDownload
+                }
+            }
+        }
+
+        #region Restsharp版
         /// <summary>
         /// 查询华为订单,Restsharp方式
         /// </summary>
-        /// <param name="page">第几页。由于总页数未知，可以从第1页遍历到第n页，当查不出数据时就是最后一页</param>
+        /// <param name="pageNum">第几页。由于总页数未知，可以从第1页遍历到第n页，当查不出数据时就是最后一页</param>
         /// <param name="poStatus">PO签返标志</param>
         /// <param name="poSubType">PO业务领域</param>
         /// <param name="shipmentStatus">订单状态</param>
         /// <param name="pageSize">每页条数</param>
-        /// <returns>PoLineListOutputParameter订单查询输出参数，其中PageVO包含由数据数量信息，Results包含返回的数据集</returns>
-        public PoLineListOutputParameter GetPoLineListRest(int page, EPoStatus poStatus = EPoStatus.all, EPoSubType poSubType = EPoSubType.P, EShipmentStatus shipmentStatus = EShipmentStatus.all, int pageSize = 10)
+        /// <returns>PoLineListOutput订单查询输出参数，其中PageVO包含由数据数量信息，Results包含返回的数据集</returns>
+        public PoLineListOutput GetPoLineListRest(int pageNum, EPoStatus poStatus = EPoStatus.all, EPoSubType poSubType = EPoSubType.P, EShipmentStatus shipmentStatus = EShipmentStatus.all, int pageSize = 10)
         {
-            PoLineListInParameter param = new PoLineListInParameter
+            PoLineListInput param = new PoLineListInput
             {
                 PoStatus = poStatus.ToString(),
                 PoSubType = poSubType.ToString(),
                 ShipmentStatus = shipmentStatus.ToString()
             };
-            PoLineListOutputParameter output = dal.GetPoLineListRest(param, page, pageSize);
+            PoLineListOutput output = dal.GetPoLineListRest(param, pageNum, pageSize);
             return output;
-        }
+        } 
+        #endregion
     }
 }

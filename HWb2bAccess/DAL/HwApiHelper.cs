@@ -132,6 +132,7 @@ namespace HWb2bAccess.DAL
                 request.CookieContainer.Add(cookies);
             }
             //接收数据        
+            
             return request.GetResponse() as HttpWebResponse;
         }
 

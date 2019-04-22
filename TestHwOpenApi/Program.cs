@@ -20,7 +20,7 @@ namespace TestHwOpenApi
         {
             PoBLL bll = new PoBLL();
             
-            PoLineListOutputParameter polineList = bll.GetPoLineList(2,EPoStatus.all,EPoSubType.P,EShipmentStatus.all,2 );
+            PoLineListOutput polineList = bll.GetPoLineList(2,EPoStatus.all,EPoSubType.P,EShipmentStatus.all,2 );
             if(polineList!=null)
             {
                 Console.WriteLine("Find POs!");

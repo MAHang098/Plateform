@@ -49,16 +49,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\DownloadBLL.cs" />
     <Compile Include="BLL\PoBLL.cs" />
     <Compile Include="BLL\TokenBLL.cs" />
-    <Compile Include="DAL\FileDownloadDAL.cs" />
+    <Compile Include="DAL\DownloadDAL.cs" />
     <Compile Include="DAL\HwApiHelper.cs" />
     <Compile Include="DAL\PoDAL.cs" />
     <Compile Include="DAL\TokenDAL.cs" />
     <Compile Include="Model\FileDownload.cs" />
     <Compile Include="Model\General.cs" />
+    <Compile Include="Model\PO\FindColTaskList.cs" />
     <Compile Include="Model\PO\FindPoLineList.cs" />
     <Compile Include="Model\PO\PrintPo.cs" />
+    <Compile Include="Model\PO\SignBackPoList.cs" />
     <Compile Include="Model\SettingItems.cs" />
     <Compile Include="Model\Token.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

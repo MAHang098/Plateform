@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnPrintPo = new System.Windows.Forms.Button();
             this.cbShipmentStatus = new System.Windows.Forms.ComboBox();
             this.cbPoSubType = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,13 +57,14 @@
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColPoNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColLineLocationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColTaskId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnPrintPo = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
@@ -70,16 +72,16 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 10;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel1.Controls.Add(this.btnPrintPo, 2, 9);
             this.tableLayoutPanel1.Controls.Add(this.cbShipmentStatus, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.cbPoSubType, 3, 0);
@@ -101,21 +103,31 @@
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 8);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 10;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1200, 675);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // btnPrintPo
+            // 
+            this.btnPrintPo.Enabled = false;
+            this.btnPrintPo.Location = new System.Drawing.Point(163, 425);
+            this.btnPrintPo.Name = "btnPrintPo";
+            this.btnPrintPo.Size = new System.Drawing.Size(74, 22);
+            this.btnPrintPo.TabIndex = 18;
+            this.btnPrintPo.Text = "打印订单";
+            this.btnPrintPo.UseVisualStyleBackColor = true;
+            this.btnPrintPo.Click += new System.EventHandler(this.BtnPrintPo_Click);
             // 
             // cbShipmentStatus
             // 
@@ -127,10 +139,9 @@
             "Cancelled取消的订单",
             "Closed关闭的订单",
             "Closed_For_Receving已交货未关闭的订单"});
-            this.cbShipmentStatus.Location = new System.Drawing.Point(604, 4);
-            this.cbShipmentStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbShipmentStatus.Location = new System.Drawing.Point(403, 3);
             this.cbShipmentStatus.Name = "cbShipmentStatus";
-            this.cbShipmentStatus.Size = new System.Drawing.Size(109, 26);
+            this.cbShipmentStatus.Size = new System.Drawing.Size(74, 20);
             this.cbShipmentStatus.TabIndex = 6;
             // 
             // cbPoSubType
@@ -140,20 +151,18 @@
             "E工程领域",
             "P产品领域",
             "G综合领域"});
-            this.cbPoSubType.Location = new System.Drawing.Point(364, 4);
-            this.cbPoSubType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbPoSubType.Location = new System.Drawing.Point(243, 3);
             this.cbPoSubType.Name = "cbPoSubType";
-            this.cbPoSubType.Size = new System.Drawing.Size(109, 26);
+            this.cbPoSubType.Size = new System.Drawing.Size(74, 20);
             this.cbPoSubType.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(4, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 42);
+            this.label1.Size = new System.Drawing.Size(74, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "签返标志";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -162,10 +171,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(244, 0);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(163, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 42);
+            this.label2.Size = new System.Drawing.Size(74, 28);
             this.label2.TabIndex = 1;
             this.label2.Text = "业务领域";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -174,10 +182,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(484, 0);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(323, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 42);
+            this.label3.Size = new System.Drawing.Size(74, 28);
             this.label3.TabIndex = 2;
             this.label3.Text = "订单状态";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -186,10 +193,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(964, 0);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(643, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 42);
+            this.label4.Size = new System.Drawing.Size(74, 28);
             this.label4.TabIndex = 3;
             this.label4.Text = "每页订单数";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -202,28 +208,25 @@
             "before_signed_back未签返",
             "signed_back已签返",
             "WARN警告"});
-            this.cbPoStatus.Location = new System.Drawing.Point(124, 4);
-            this.cbPoStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbPoStatus.Location = new System.Drawing.Point(83, 3);
             this.cbPoStatus.Name = "cbPoStatus";
-            this.cbPoStatus.Size = new System.Drawing.Size(109, 26);
+            this.cbPoStatus.Size = new System.Drawing.Size(74, 20);
             this.cbPoStatus.TabIndex = 4;
             // 
             // txtPageSize
             // 
-            this.txtPageSize.Location = new System.Drawing.Point(1084, 4);
-            this.txtPageSize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPageSize.Location = new System.Drawing.Point(723, 3);
             this.txtPageSize.Name = "txtPageSize";
-            this.txtPageSize.Size = new System.Drawing.Size(109, 28);
+            this.txtPageSize.Size = new System.Drawing.Size(74, 21);
             this.txtPageSize.TabIndex = 7;
             this.txtPageSize.Text = "20";
             this.txtPageSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnQuery
             // 
-            this.btnQuery.Location = new System.Drawing.Point(844, 4);
-            this.btnQuery.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQuery.Location = new System.Drawing.Point(563, 3);
             this.btnQuery.Name = "btnQuery";
-            this.btnQuery.Size = new System.Drawing.Size(111, 33);
+            this.btnQuery.Size = new System.Drawing.Size(74, 22);
             this.btnQuery.TabIndex = 8;
             this.btnQuery.Text = "查询";
             this.btnQuery.UseVisualStyleBackColor = true;
@@ -242,7 +245,9 @@
             this.Column7,
             this.Column8,
             this.Column9,
-            this.Column10,
+            this.ColPoNum,
+            this.ColLineLocationId,
+            this.ColTaskId,
             this.Column14,
             this.Column11,
             this.Column12,
@@ -250,30 +255,31 @@
             this.Column15});
             this.tableLayoutPanel1.SetColumnSpan(this.dgvData, 10);
             this.dgvData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvData.Location = new System.Drawing.Point(4, 46);
-            this.dgvData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvData.Location = new System.Drawing.Point(3, 31);
             this.dgvData.Name = "dgvData";
             this.tableLayoutPanel1.SetRowSpan(this.dgvData, 7);
             this.dgvData.RowTemplate.Height = 23;
-            this.dgvData.Size = new System.Drawing.Size(1192, 541);
+            this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvData.Size = new System.Drawing.Size(794, 360);
             this.dgvData.TabIndex = 9;
+            this.dgvData.SelectionChanged += new System.EventHandler(this.DgvData_SelectionChanged);
             // 
             // btnSignBack
             // 
-            this.btnSignBack.Location = new System.Drawing.Point(124, 637);
-            this.btnSignBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSignBack.Enabled = false;
+            this.btnSignBack.Location = new System.Drawing.Point(83, 425);
             this.btnSignBack.Name = "btnSignBack";
-            this.btnSignBack.Size = new System.Drawing.Size(111, 33);
+            this.btnSignBack.Size = new System.Drawing.Size(74, 22);
             this.btnSignBack.TabIndex = 10;
             this.btnSignBack.Text = "签返";
             this.btnSignBack.UseVisualStyleBackColor = true;
+            this.btnSignBack.Click += new System.EventHandler(this.BtnSignBack_Click);
             // 
             // btnQuit
             // 
-            this.btnQuit.Location = new System.Drawing.Point(844, 637);
-            this.btnQuit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQuit.Location = new System.Drawing.Point(563, 425);
             this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(111, 33);
+            this.btnQuit.Size = new System.Drawing.Size(74, 22);
             this.btnQuit.TabIndex = 11;
             this.btnQuit.Text = "退出";
             this.btnQuit.UseVisualStyleBackColor = true;
@@ -281,20 +287,18 @@
             // 
             // txtPageNum
             // 
-            this.txtPageNum.Location = new System.Drawing.Point(964, 595);
-            this.txtPageNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPageNum.Location = new System.Drawing.Point(643, 397);
             this.txtPageNum.Name = "txtPageNum";
-            this.txtPageNum.Size = new System.Drawing.Size(109, 28);
+            this.txtPageNum.Size = new System.Drawing.Size(74, 21);
             this.txtPageNum.TabIndex = 12;
             this.txtPageNum.Text = "1";
             this.txtPageNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnDecrease
             // 
-            this.btnDecrease.Location = new System.Drawing.Point(844, 595);
-            this.btnDecrease.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDecrease.Location = new System.Drawing.Point(563, 397);
             this.btnDecrease.Name = "btnDecrease";
-            this.btnDecrease.Size = new System.Drawing.Size(111, 33);
+            this.btnDecrease.Size = new System.Drawing.Size(74, 22);
             this.btnDecrease.TabIndex = 13;
             this.btnDecrease.Text = "<";
             this.btnDecrease.UseVisualStyleBackColor = true;
@@ -302,10 +306,9 @@
             // 
             // btnIncrease
             // 
-            this.btnIncrease.Location = new System.Drawing.Point(1084, 595);
-            this.btnIncrease.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnIncrease.Location = new System.Drawing.Point(723, 397);
             this.btnIncrease.Name = "btnIncrease";
-            this.btnIncrease.Size = new System.Drawing.Size(111, 33);
+            this.btnIncrease.Size = new System.Drawing.Size(74, 22);
             this.btnIncrease.TabIndex = 14;
             this.btnIncrease.Text = ">";
             this.btnIncrease.UseVisualStyleBackColor = true;
@@ -314,19 +317,17 @@
             // lbTotalPages
             // 
             this.lbTotalPages.AutoSize = true;
-            this.lbTotalPages.Location = new System.Drawing.Point(964, 633);
-            this.lbTotalPages.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbTotalPages.Location = new System.Drawing.Point(643, 422);
             this.lbTotalPages.Name = "lbTotalPages";
-            this.lbTotalPages.Size = new System.Drawing.Size(17, 18);
+            this.lbTotalPages.Size = new System.Drawing.Size(11, 12);
             this.lbTotalPages.TabIndex = 15;
             this.lbTotalPages.Text = "/";
             // 
             // txtTotalRows
             // 
-            this.txtTotalRows.Location = new System.Drawing.Point(124, 595);
-            this.txtTotalRows.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTotalRows.Location = new System.Drawing.Point(83, 397);
             this.txtTotalRows.Name = "txtTotalRows";
-            this.txtTotalRows.Size = new System.Drawing.Size(109, 28);
+            this.txtTotalRows.Size = new System.Drawing.Size(74, 21);
             this.txtTotalRows.TabIndex = 17;
             this.txtTotalRows.Text = "0";
             this.txtTotalRows.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -335,10 +336,9 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(4, 591);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(3, 394);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(112, 42);
+            this.label5.Size = new System.Drawing.Size(74, 28);
             this.label5.TabIndex = 16;
             this.label5.Text = "订单总数";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -397,11 +397,23 @@
             this.Column9.HeaderText = "支付条款";
             this.Column9.Name = "Column9";
             // 
-            // Column10
+            // ColPoNum
             // 
-            this.Column10.DataPropertyName = "PoNumber";
-            this.Column10.HeaderText = "PO号";
-            this.Column10.Name = "Column10";
+            this.ColPoNum.DataPropertyName = "PoNumber";
+            this.ColPoNum.HeaderText = "PO号";
+            this.ColPoNum.Name = "ColPoNum";
+            // 
+            // ColLineLocationId
+            // 
+            this.ColLineLocationId.DataPropertyName = "LineLocationId";
+            this.ColLineLocationId.HeaderText = "发运行ID";
+            this.ColLineLocationId.Name = "ColLineLocationId";
+            // 
+            // ColTaskId
+            // 
+            this.ColTaskId.DataPropertyName = "TaskNum";
+            this.ColTaskId.HeaderText = "任务单ID";
+            this.ColTaskId.Name = "ColTaskId";
             // 
             // Column14
             // 
@@ -433,23 +445,12 @@
             this.Column15.HeaderText = "订单状态";
             this.Column15.Name = "Column15";
             // 
-            // btnPrintPo
-            // 
-            this.btnPrintPo.Location = new System.Drawing.Point(244, 637);
-            this.btnPrintPo.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPrintPo.Name = "btnPrintPo";
-            this.btnPrintPo.Size = new System.Drawing.Size(111, 33);
-            this.btnPrintPo.TabIndex = 18;
-            this.btnPrintPo.Text = "打印订单";
-            this.btnPrintPo.UseVisualStyleBackColor = true;
-            // 
             // TestPOApi
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 675);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "TestPOApi";
             this.Text = "华为PO API测试";
             this.Load += new System.EventHandler(this.TestPOApi_Load);
@@ -481,6 +482,7 @@
         private System.Windows.Forms.Label lbTotalPages;
         private System.Windows.Forms.TextBox txtTotalRows;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnPrintPo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -490,12 +492,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColPoNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColLineLocationId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColTaskId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
-        private System.Windows.Forms.Button btnPrintPo;
     }
 }

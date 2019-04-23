@@ -12,134 +12,134 @@ namespace HWb2bAccess.Model.PO
         /// <summary>
         /// 必需。PO业务领域：E-工程领域 P-生产领域 G-综合领域
         /// </summary>
-        public string PoSubType { get; set; }
+        public string poSubType { get; set; }
         /// 必须。状态类别，固定为COL_TASK_STATUS
         /// </summary>
-        public string StatusType { get; set; }
+        public string statusType { get; set; }
         /// <summary>
         /// 非必须。订单状态，all-全部，NEW-新下订单，OPEN-在途订单，CANCELLED-取消的订单，CLOSED-关闭的订单，CLOSED_FOR_RECEVING-已交货未关闭的订单
         /// </summary>
-        public string ShipmentStatus { get; set; }
+        public string shipmentStatus { get; set; }
         /// <summary>
         /// 非必需。订单签返状态。"before_signed_back：表示未签返， signed_back：表示已签返，   WARN：表示警告
         /// </summary>
-        public string PoStatus { get; set; }
+        public string poStatus { get; set; }
 
         /// <summary>
         /// 任务单状态,非必需
         /// </summary>
-        public string ColTaskOrPoStatus { get; set; }
+        public string colTaskOrPoStatus { get; set; }
 
         /// <summary>
         /// 是否只看交期变更，非必需
         /// </summary>
-        public bool? HasChangeDelivery { get; set; }
+        public bool? hasChangeDelivery { get; set; }
         /// <summary>
         /// Item编码，非必需。最多10个，多个时用半角逗号隔开
         /// </summary>
-        public string ItemCode { get; set; }
+        public string itemCode { get; set; }
         /// <summary>
         /// 华为子公司ID，非必需。最多10个，多个时用半角逗号隔开
         /// </summary>
-        public string OrgId { get; set; }
+        public string orgId { get; set; }
         /// <summary>
         /// PO号，非必需
         /// </summary>
-        public string PoNumber { get; set; }
+        public string poNumber { get; set; }
         /// <summary>
         /// 承诺开始日期,非必需,Data Format：YYYY-MM-dd
         /// </summary>
-        public string PromiseDateStart { get; set; }
+        public string promiseDateStart { get; set; }
         /// <summary>
         /// 承诺结束日期,非必需,Data Format：YYYY-MM-dd
         /// </summary>
-        public string PromiseDateEnd { get; set; }
+        public string promiseDateEnd { get; set; }
         /// <summary>
         /// 发布开始日期,非必需,Data Format：YYYY-MM-dd
         /// </summary>
-        public string PublishDateStart { get; set; }
+        public string publishDateStart { get; set; }
         /// <summary>
         /// 发布结束日期,非必需,Data Format：YYYY-MM-dd
         /// </summary>
-        public string PublishDateEnd { get; set; }
+        public string publishDateEnd { get; set; }
 
         /// <summary>
         /// 采购模式，非必需.取值为：all, T_DUN,DUN, Normal, PO_Consignment,VMI_Consignment,  VCI_CA, VCI_PO,  VMI_TSN,   VMI_VRN,   Candyman
         /// </summary>
-        public string BusinessMode { get; set; }
+        public string businessMode { get; set; }
         /// <summary>
         /// 厂家型号，非必需
         /// </summary>
-        public string PartNumber { get; set; }
+        public string partNumber { get; set; }
         /// <summary>
         /// 采购协议号，非必需
         /// </summary>
-        public string SubcontractNo { get; set; }
+        public string subcontractNo { get; set; }
         /// <summary>
         /// 站点信息，非必需
         /// </summary>
-        public string SiteInfo { get; set; }
+        public string siteInfo { get; set; }
         /// <summary>
         /// 工程号，非必需
         /// </summary>
-        public string EngineeringNoLike { get; set; }
+        public string engineeringNoLike { get; set; }
         /// <summary>
         /// 项目编码，非必需
         /// </summary>
-        public string ProjectNo { get; set; }
+        public string projectNo { get; set; }
         /// <summary>
         /// 工程名称，非必需
         /// </summary>
-        public string EngName { get; set; }
+        public string engName { get; set; }
         /// <summary>
         /// 项目名称，非必需
         /// </summary>
-        public string EngInfoEngineeringName { get; set; }
+        public string engInfoEngineeringName { get; set; }
         /// <summary>
         /// 超过X天没处理，非必需
         /// </summary>
-        public int? MoreXDaysUndeal { get; set; }
+        public int? moreXDaysUndeal { get; set; }
         /// <summary>
         /// 生产厂家，非必需
         /// </summary>
-        public string ManufactureSiteInfo { get; set; }
+        public string manufactureSiteInfo { get; set; }
         /// <summary>
         /// 采购员，非必需
         /// </summary>
-        public string AgentEmployeeNumber { get; set; }
+        public string agentEmployeeNumber { get; set; }
         /// <summary>
         /// 是否包含VCICA，非必需 ，生产专用
         ///'新订单：includeVCICA=-1； vci-ca订单 :includeVCICA=1;不传PO和CA都查出来。
         /// </summary>
-        public int? IncludeVCICA { get; set; }
+        public int? includeVCICA { get; set; }
         /// <summary>
         /// lineLocationId集合，非必需
         /// </summary>
-        public List<long> LineLocationIdList { get; set; }
+        public List<long> lineLocationIdList { get; set; }
         /// <summary>
         /// instanceId 集合，非必需
         /// </summary>
-        public List<int> InstanceIdList { get; set; }
+        public List<int> instanceIdList { get; set; }
         /// <summary>
         /// 最后更新时间-开始，非必需，Data Format：yyyy-MM-dd HH:mm:ss
         /// </summary>
-        public string LastUpdateDateStart { get; set; }
+        public string lastUpdateDateStart { get; set; }
         /// <summary>
         /// 最后更新时间-结束，非必需
         /// </summary>
-        public string LastUpdateDateEnd { get; set; }
+        public string lastUpdateDateEnd { get; set; }
         /// <summary>
         /// 构造函数，提供默认值
         /// </summary>
         public PoLineListInput()
         {
-            PoSubType = "P";
-            ShipmentStatus = "all";
-            PoStatus = "all";
-            StatusType = "COL_TASK_STATUS";
-            HasChangeDelivery = null;
-            MoreXDaysUndeal = null;
-            IncludeVCICA = null;
+            poSubType = "P";
+            shipmentStatus = "all";
+            poStatus = "all";
+            statusType = "COL_TASK_STATUS";
+            hasChangeDelivery = null;
+            moreXDaysUndeal = null;
+            includeVCICA = null;
         }
 
     }
@@ -174,7 +174,7 @@ namespace HWb2bAccess.Model.PO
         /// <summary>
         /// ERP服务器ID
         /// </summary>
-        public int InstanceId { get; set; }
+        public EInstanceId InstanceId { get; set; }
         /// <summary>
         /// 采购员
         /// </summary>
@@ -280,7 +280,7 @@ namespace HWb2bAccess.Model.PO
         /// <summary>
         /// 厂家型号
         /// </summary>
-        public string partNumber { get; set; }
+        public string PartNumber { get; set; }
         /// <summary>
         /// 支付条款
         /// </summary>

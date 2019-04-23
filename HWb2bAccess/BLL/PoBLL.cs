@@ -12,6 +12,8 @@ namespace HWb2bAccess.BLL
     public class PoBLL
     {
         PoDAL dal = new PoDAL();
+        public string ErrorCode { get { return dal.ErrorCode; } }
+        public string ErrorMsg { get { return dal.ErrorMsg; } }
         public PoBLL()
         {
               
@@ -29,35 +31,64 @@ namespace HWb2bAccess.BLL
         {
             PoLineListInput param = new PoLineListInput
             {
-                PoStatus = poStatus.ToString(),
-                PoSubType = poSubType.ToString(),
-                ShipmentStatus = shipmentStatus.ToString()
+                poStatus = poStatus.ToString(),
+                poSubType = poSubType.ToString(),
+                shipmentStatus = shipmentStatus.ToString()
             };
 
             PoLineListOutput output = dal.GetPoLineList(param, pageNum, pageSize);
             return output;
         }
-
-        public bool GenPoPdf(string outFile,bool showPrice,ELang lang=ELang.zh_CN,params PoLineToGenPdf[] poLines)
+        /// <summary>
+        /// 下载订单的PDF文件
+        /// </summary>
+        /// <param name="outFile">输出文件名</param>
+        /// <param name="showPrice">是否显示价格</param>
+        /// <param name="lang">语言版本</param>
+        /// <param name="erpId">ERPID,默认1</param>
+        /// <param name="poNums">待输出的PO行 PoLineToDownload</param>
+        /// <returns></returns>
+        public bool DownloadPoPdf(string outFile,bool showPrice,ELang lang=ELang.zh_CN,EInstanceId erpId=EInstanceId.Huawei,params string[] poNums)
         {
+            List<PoLineToDownload> poLines = new List<PoLineToDownload>();
+            foreach (var p in poNums)
+            {
+                poLines.Add(new PoLineToDownload { instanceId = erpId, poNumber = p });
+            }
+
             bool ret = false;
             GenPoPdfInput input = new GenPoPdfInput
             {
-                Lang = lang.ToString(),
-                QueryHistoryDB = false,
-                ShowPriceFlag = showPrice,
-                Lines = poLines
+                lang = lang.ToString(),
+                queryHistoryDB = 0,
+                showPriceFlag = showPrice,
+                lines = poLines.ToArray()
             };
             var res = dal.GenPoPdfDAL(input);
             if(res!=null)
             {
                 if(res.Success)
                 {
-                    string fileKey = res.FileUrl;
-                    //TODO:FileDownload
+                    string fileKey = res.PreUrl;
+                    DownloadBLL downloadBLL = new DownloadBLL();
+                    FileDownloadInput downLoadParam = new FileDownloadInput
+                    {
+                        downloadType = "1",
+                        downloadKey = res.PreUrl
+                    };
+                    ret = downloadBLL.DownloadToFile(outFile, downLoadParam);
                 }
             }
+            return ret;
         }
+
+        public bool SignBackPoList(SignBackPoListInput input)
+        {
+            var res = dal.SignBackPoList(input);
+            return res.Success;
+        }
+       
+
 
         #region Restsharp版
         /// <summary>
@@ -73,9 +104,9 @@ namespace HWb2bAccess.BLL
         {
             PoLineListInput param = new PoLineListInput
             {
-                PoStatus = poStatus.ToString(),
-                PoSubType = poSubType.ToString(),
-                ShipmentStatus = shipmentStatus.ToString()
+                poStatus = poStatus.ToString(),
+                poSubType = poSubType.ToString(),
+                shipmentStatus = shipmentStatus.ToString()
             };
             PoLineListOutput output = dal.GetPoLineListRest(param, pageNum, pageSize);
             return output;

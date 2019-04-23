@@ -12,50 +12,51 @@ namespace HWb2bAccess.Model.PO
         /// <summary>
         /// 是否显示金额，默认：显示
         /// </summary>
-        public bool ShowPriceFlag { get; set; }
+        public bool showPriceFlag { get; set; }
         /// <summary>
         /// 是否查询归档PO，默认不查
         /// </summary>
-        public bool QueryHistoryDB { get; set; }
+        public int queryHistoryDB { get; set; }
         /// <summary>
         /// 文本语言： en_US,zhCN,ru_MO,It_IT. 默认：zh_CN
         /// </summary>
-        public string Lang { get; set; }
+        public string lang { get; set; }
 
-        public PoLineToGenPdf[] Lines { get; set; }
+        public PoLineToDownload[] lines { get; set; }
         /// <summary>
         /// 用默认值创建输入参数
         /// </summary>
         public GenPoPdfInput()
         {
-            ShowPriceFlag = true;
-            QueryHistoryDB = false;
-            Lang = "zh_CN";            
+            showPriceFlag = true;
+            queryHistoryDB = 0;
+            lang = "zh_CN";            
         }
-        public GenPoPdfInput(params PoLineToGenPdf[] poLineToGenPdfs)
+        public GenPoPdfInput(params PoLineToDownload[] poLineToGenPdfs)
         {
-            ShowPriceFlag = true;
-            QueryHistoryDB = false;
-            Lang = "zh_CN";
-            Lines = poLineToGenPdfs;
+            showPriceFlag = true;
+            queryHistoryDB = 0;
+            lang = "zh_CN";
+            lines = poLineToGenPdfs;
         }
     }
 
-    public class PoLineToGenPdf
+    public class PoLineToDownload
     {
         /// <summary>
-        /// ERP服务器ID，华技使用：1
+        /// ERP服务器ID，系统帐套标识，1，华技，2，巴西，4，聚信
         /// </summary>
-        public int InstanceId { get; set; }
-        public string PoNumber { get; set; }
-        public PoLineToGenPdf()
+        public EInstanceId instanceId { get; set; }
+        public string poNumber { get; set; }
+        public PoLineToDownload()
         {
-            InstanceId = 1;//默认使用华技ERP服务器
+            instanceId = EInstanceId.Huawei;//默认使用华技ERP服务器
         }
     }
 
     public class GenPoPdfOutParameter
     {
+        public string HttpCode { get; set; }
         /// <summary>
         /// 成功标志
         /// </summary>
@@ -68,7 +69,7 @@ namespace HWb2bAccess.Model.PO
         /// <summary>
         /// 文件下载地址 需要传入download服务的downloadKey参数进行下载
         /// </summary>
-        public string FileUrl { get; set; }
+        public string PreUrl { get; set; }
 
     }
 }
